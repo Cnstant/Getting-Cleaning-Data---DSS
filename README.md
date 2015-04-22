@@ -1,4 +1,4 @@
-﻿# Getting-Cleaning-Data---DSS
+# Getting-Cleaning-Data---DSS
 # Read me for Programming Assignement 2 -  Exploratory Data Analysis
 
 This Read me is designed to help you work with the different files of this folder.
@@ -18,5 +18,15 @@ This folder includes :
     View(data)
     
 ### Work
-*tidy_data.txt* is produced by *run_analysis.R*. Before running *run_analysis.R*, please make sure your working directory is set to the directory where you copied this folder.
+*tidy_data.txt* is produced by *run_analysis.R*. Before running *run_analysis.R*, please make sure your working directory is set to the directory where you copied this folder. To have a complete description of the data, please see CodeBook.md
+Here is a list of the different steps to produce it : 
+   - Train data set files, i.e *subject_train.txt*, *X_train.txt* and *y_train.txt* are merged together. *Subject* is the first column, *X_train* ranges from column 2 to 562 (561 different features), and *y_train* is the last column. The resulting dataframe contains 7352 observations
+   - Test data set files, i.e *subject_test.txt*, *X_test.txt* and *y_test.txt* are merged together. *Subject* is the first column, *X_test* ranges from column 2 to 562 (561 different features), and *y_test* is the last column. The resulting dataframe contains 2947 observations
+   - Train and Test data frames are concatenated in this order, creating a data frame of 10299 observations
+   - From the *features.txt* file, we extracted the features names and set the column names of the data frame : fisrt 'Subject', then the 561 different feature names and finally 'Activity'
+   - In the scope of this programming assignment, we were asked to only take into account the variables consistent with a mean or a standard deviation. We subset the data frame to all the columns whose names contained 'mean()' or 'sd()'. However, columns dealing with 'meanFreq' were left aside. The subset data frame contains then 68 columns : 'Subject', 66 features bearing upon mean and standard deviation and 'Activity', with still 10299 observations
+   - In order to make things interpretable, 'Activity' levels were changed from [1,2,3,4,5,6] to [WALKING,WALKING_UPSTAIRS,WALKING_DOWNSTAIRS,SITTING,STANDING,LAYING] respectivily, as stated in *activity_labels.txt* file.
+   - The resulting data frame, written in *tidy_data.txt* is the mean and the standard deviation of every 66 selected features for each tuple (Subject, Activity). The 66 features are described in CodeBook.md
+
+
 For any question, feel free to contact me : constant.bridon@gmail.com
