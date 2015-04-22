@@ -1,4 +1,5 @@
-setwd('C:/Users/Local-Admin/Desktop/ProgrammingAssignment2')
+#setwd('C:/Users/constant/Desktop/dossier/DataScienceSpec/3 - Getting_Cleaning_Data/ProgrammingAssignment2')
+#Please set youre working directory
 
 # Loading the useful packages
 library(data.table)
@@ -28,7 +29,7 @@ data <- rbind(training, test)
 features <- read.table('./Data/features.txt')
 names(data) <- c('Subject',as.character(features[,2]),'Activity')
 
-#Substetting the data frame to the mean and sd values of the data frame (meanFreq excluded)
+#Substetting the data frame to the mean and sd variables of the data frame (meanFreq excluded)
 idx <- (grepl("mean()",names(data), fixed = T)) | (grepl("std()",names(data), fixed = T))
 subdata <- data[,c(names(data)[1],names(data)[idx], names(data)[563])]
 
